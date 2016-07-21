@@ -14,7 +14,11 @@ defmodule Yamlex.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger, :fast_yaml],
+    [applications: [
+						:logger,
+						:fast_yaml,
+						:maybe,
+					],
      mod: {Yamlex, []}]
   end
 
@@ -27,7 +31,10 @@ defmodule Yamlex.Mixfile do
   #   {:mydep, git: "https://github.com/elixir-lang/mydep.git", tag: "0.1.0"}
   #
   # Type "mix help deps" for more examples and options
-  defp deps do
-    [{:fast_yaml, github: "timCF/fast_yaml"}]
-  end
+	defp deps do
+		[
+			{:fast_yaml, github: "timCF/fast_yaml"},
+			{:maybe, github: "timCF/maybe"},
+		]
+	end
 end

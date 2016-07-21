@@ -1,3 +1,4 @@
 %{"fast_yaml": {:git, "https://github.com/timCF/fast_yaml.git", "e63701e5bd90e2af7e401d3b41c8e9ad0d7a2515", []},
   "libyaml": {:git, "git://github.com/timCF/libyaml", "c91da4716967086dbfbed2912131e16926c98f09", []},
+  "maybe": {:git, "https://github.com/timCF/maybe.git", "ce235c33dfb626934159b23a3abe296e075f0522", []},
   "p1_utils": {:hex, :p1_utils, "1.0.4", "7face65db102b5d1ebe7ad3c7517c5ee8cfbe174c6658e3affbb00eb66e06787", [:rebar3], []}}
