@@ -1,0 +1,48 @@
+checkout: 
+  post: 
+    - git submodule sync
+    - git submodule update --init
+database: 
+  override: 
+    - cp config/database.yml.ci config/database.yml
+    - bundle exec rake db:create db:schema:load
+dependencies: 
+  cache_directories: 
+    - "custom_1"
+    - "~/custom_2"
+  override: 
+    - 
+      bundle install: 
+        timeout: 180
+  pre: 
+    - npm install coffeescript
+    - gem uninstall bundler
+    - gem install bundler --pre
+deployment: 
+  staging: 
+    branch: master
+    heroku: 
+      appname: foo-bar-123
+machine: 
+  environment: 
+    CIRCLE_ENV: test
+    DATABASE_URL: postgres://ubuntu:@127.0.0.1:5432/circle_test
+  hosts: 
+    circlehost: 127.0.0.1
+    dev.mycompany.com: 127.0.0.1
+  ruby: 
+    version: 1.8.7-p358-falcon-perf
+  timezone: America/Los_Angeles
+notify: 
+  webhooks: 
+    - 
+      url: https://someurl.com/hooks/circle
+test: 
+  override: 
+    - phpunit test/unit-tests
+  post: 
+    - 
+      bundle exec rake jasmine:ci: 
+        environment: 
+          RACK_ENV: test
+          RAILS_ENV: test

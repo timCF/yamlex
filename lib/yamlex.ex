@@ -1,6 +1,8 @@
 defmodule Yamlex do
 	use Application
 
+	defstruct keys_atoms: true
+
 	# See http://elixir-lang.org/docs/stable/elixir/Application.html
 	# for more information on OTP Applications
 	def start(_type, _args) do
@@ -26,8 +28,9 @@ defmodule Yamlex do
 	defp from_tree(lst = [_|_]), do: Enum.map(lst, &from_tree/1)
 	defp from_tree(some), do: some
 
-	def decode(bin) when is_binary(bin) do
-		{:ok, [data]} = :fast_yaml.decode(bin)
+	def decode(bin, opts \\ %Yamlex{})
+	def decode(bin, %Yamlex{keys_atoms: keys_atoms}) when is_binary(bin) and is_boolean(keys_atoms) do
+		{:ok, [data]} = :fast_yaml.decode(bin, [plain_as_atom: keys_atoms])
 		to_tree(data)
 	end
 

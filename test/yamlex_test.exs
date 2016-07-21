@@ -1,8 +1,9 @@
 defmodule YamlexTest do
-  use ExUnit.Case
-  doctest Yamlex
+	use ExUnit.Case
+	doctest Yamlex
 
-  test "the truth" do
-    assert 1 + 1 == 2
-  end
+	test "can encode and decode" do
+		inp = File.read!("./test/in.yml")
+		assert inp == (inp |> Yamlex.decode |> Yamlex.encode |> Yamlex.decode |> Yamlex.encode)
+	end
 end
