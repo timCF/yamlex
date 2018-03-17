@@ -7,7 +7,23 @@ defmodule Yamlex.Mixfile do
      elixir: "~> 1.3",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     deps: deps()]
+     deps: deps(),
+
+     description: "YAML parser: encode + decode",
+     source_url: "https://github.com/timCF/yamlex",
+     package: [
+       licenses: ["Apache 2.0"],
+       maintainers: ["Ilja Tkachuk aka timCF"],
+       links: %{
+         "GitHub" => "https://github.com/timCF/yamlex",
+         "Author's home page" => "https://timcf.github.io/"
+       }
+     ],
+     # Docs
+     name: "Yamlex",
+     docs: [main: "readme", extras: ["README.md"]],
+
+   ]
   end
 
   # Configuration for the OTP application
@@ -35,6 +51,7 @@ defmodule Yamlex.Mixfile do
 		[
 			{:fast_yaml, github: "timCF/fast_yaml"},
 			{:maybe, github: "timCF/maybe"},
+			{:ex_doc, "~> 0.16", only: :dev, runtime: false},
 		]
 	end
 end
