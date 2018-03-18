@@ -33,7 +33,6 @@ defmodule Yamlex.Mixfile do
     [applications: [
 						:logger,
 						:fast_yaml,
-						:maybe,
 					],
      mod: {Yamlex, []}]
   end
@@ -49,8 +48,9 @@ defmodule Yamlex.Mixfile do
   # Type "mix help deps" for more examples and options
 	defp deps do
 		[
-			{:fast_yaml, github: "timCF/fast_yaml"},
-			{:maybe, github: "timCF/maybe"},
+			{:fast_yaml, "~> 1.0.12"},
+			{:p1_utils, "~> 1.0.10"},
+			{:aspire, "~> 0.1.0"},
 			{:ex_doc, "~> 0.16", only: :dev, runtime: false},
 		]
 	end

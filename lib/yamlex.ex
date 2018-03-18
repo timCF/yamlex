@@ -24,7 +24,7 @@ defmodule Yamlex do
 	defp to_tree(lst = [_|_]), do: Enum.map(lst, &to_tree/1)
 	defp to_tree(some), do: some
 
-	defp from_tree(map = %{}), do: Enum.map(map, fn({k,v}) -> {Maybe.to_number(k), from_tree(v)} end)
+	defp from_tree(map = %{}), do: Enum.map(map, fn({k,v}) -> {Aspire.to_number(k), from_tree(v)} end)
 	defp from_tree(lst = [_|_]), do: Enum.map(lst, &from_tree/1)
 	defp from_tree(some), do: some
 
